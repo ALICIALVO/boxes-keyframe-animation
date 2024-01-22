@@ -1,0 +1,102 @@
+@import "reset";
+@import "base";
+@import "mixins";
+
+$outer-box-color: rgba(115, 119, 131, 0.638);
+$inner-box-color: rgb(199, 177, 214);
+// $border: 10px solid $outer-box-color;
+
+body {
+  @include flex-container(center, center, column);
+
+  background-color: papayawhip;
+  // user-select: none;
+  perspective: 500px;
+
+  .header {
+    margin-bottom: 30px;
+    margin-top: -100px;
+    cursor: pointer;
+    color: lighten(rgb(124, 116, 129), 10%);
+    text-shadow: 0px 0px 8px rgb(63, 146, 187);
+    transition: text-shadow 300ms, color 300ms;
+    &:hover {
+      text-shadow: 0px 0px 15px rgb(89, 151, 176);
+      color: $outer-box-color;
+    }
+  }
+  .subtitle {
+    font-size: 3rem;
+    color: rgba(39, 65, 84, 0.609);
+    font-weight: 400;
+    margin-bottom: 6.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    cursor: pointer;
+  }
+  .wrapper {
+    box-shadow: 0 10px 80px #888888;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 521px;
+    height: 522px;
+    border: 10px solid $outer-box-color;
+    background: linear-gradient(to right, rgba(121, 145, 164, 0.698), rgba(128, 156, 117, 0.648));
+    transition: transform 300ms cubic-bezier(0, 0, 0.4, 0.9);
+
+    &:hover {
+      transform: rotateX(2deg);
+    }
+
+    @include flex-container(flex-start, flex-start);
+    flex-wrap: wrap;
+    align-content: flex-start;
+    // overflow-x: hidden;
+
+    .box {
+      @include flex-container(center, center);
+      box-shadow: 0px 1px 2px rgb(0, 0, 0);
+      border-radius: 10%;
+      background: darkkhaki;
+      border: dashed rgba(245, 245, 245, 0.487) 1px;
+      border-style: double;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      width: 10rem;
+      height: 10rem;
+      position: relative;
+      animation: some-other-animation 700ms cubic-bezier(1, -0.55, 0.265, 1.55);
+      // animation props go here...
+      //------------------------------
+
+      &:hover {
+        animation: moveBox 4s cubic-bezier(1, -0.55, 0.265, 2);
+      }
+    }
+  }
+}
+
+@keyframes moveBox {
+  0%{
+
+    transform: scaleZ(2);
+    opacity: 0;
+    
+  }
+  50% {
+    transform: scaleZ(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleZ(2);
+    opacity: 0;
+  }
+}
+
+@keyframes some-other-animation {
+  100% {
+    // opacity: 0;
+    transform: scale3d(0.1, 0.1, 0);
+  }
+}
